@@ -1,0 +1,32 @@
+esphome:
+  name: led-switch
+  friendly_name: LED Switch
+
+esp32:
+  board: esp32dev
+
+wifi:
+  ssid: "Tryme"
+  password: "12345678"
+  ap:
+    ssid: "led-switch Fallback Hotspot"
+    password: "password"
+
+logger:
+
+api:
+
+ota:
+  platform: esphome
+
+web_server:
+
+output:
+  - platform: gpio
+    pin: GPIO2  # Safer pin; use GPIO2 for built-in LED
+    id: led_output
+
+light:
+  - platform: binary
+    name: "My LED"
+    output: led_output
